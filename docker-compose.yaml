@@ -1,0 +1,22 @@
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./docker/server.dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgres://wow:hello@db:5432/my
+    restart: always
+    depends_on:
+      - db
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: wow
+      POSTGRES_PASSWORD: hello
+      POSTGRES_DB: my
+    ports:
+      - "5432:5432"
