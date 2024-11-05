@@ -1,5 +1,6 @@
 services:
   server:
+    container_name: server
     build:
       context: ./
       dockerfile: ./docker/server.dockerfile
@@ -12,6 +13,7 @@ services:
     depends_on:
       - db
   db:
+    container_name: postgresql
     image: postgres:17
     restart: always
     environment:
@@ -20,3 +22,13 @@ services:
       POSTGRES_DB: my
     ports:
       - "5432:5432"
+  client:
+    container_name: client
+    build:
+      context: ./
+      dockerfile: ./docker/client.dockerfile
+    ports:
+      - "80:3000"
+    environment:
+      NODE_ENV: production
+
