@@ -1,6 +1,7 @@
 import express from 'express'
 import dayjs from 'dayjs'
 import { PrismaClient } from '@prisma/client'
+import { logger } from '../utils/logger'
 
 async function main() {
   const prisma = new PrismaClient()
@@ -9,7 +10,7 @@ async function main() {
   const router = express.Router()
 
   router.get('/', (req, res) => {
-    console.log(process.env.PORT)
+    logger.info(process.env.PORT)
     res.send(dayjs().format('YYYY-MM-DD HH:mm:ss'))
   })
 

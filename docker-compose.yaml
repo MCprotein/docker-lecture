@@ -10,6 +10,8 @@ services:
       PORT: 4000
       DATABASE_URL: postgres://wow:hello@db:5432/my
     restart: always
+    volumes:
+      - ./logs:/app/logs
     depends_on:
       - db
   db:

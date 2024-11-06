@@ -1,2 +1,2 @@
 npx prisma generate
-node dist/app.js
+node dist/src/app.js
