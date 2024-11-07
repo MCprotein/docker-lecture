@@ -12,18 +12,18 @@ services:
     restart: always
     volumes:
       - ./logs:/app/logs
-    depends_on:
-      - db
-  db:
-    container_name: postgresql
-    image: postgres:17
-    restart: always
-    environment:
-      POSTGRES_USER: wow
-      POSTGRES_PASSWORD: hello
-      POSTGRES_DB: my
-    ports:
-      - "5432:5432"
+  #    depends_on:
+  #      - db
+  #  db:
+  #    container_name: postgresql
+  #    image: postgres:17
+  #    restart: always
+  #    environment:
+  #      POSTGRES_USER: wow
+  #      POSTGRES_PASSWORD: hello
+  #      POSTGRES_DB: my
+  #    ports:
+  #      - "5432:5432"
   client:
     container_name: client
     build:
